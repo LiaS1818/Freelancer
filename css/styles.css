@@ -1,0 +1,288 @@
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #ffc107;
+    --secundario: #0097a7;
+    --gris: #757575;
+    --grisClaro: #dfe9f3; 
+   
+}
+
+/* Globales */
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /* HAck para boxmodel*/
+    scroll-snap-type:y mandatory; /* pa que se vea cool el scroll, mandatory es de arriba hacia abajo*/
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+   font-size: 16px;
+   font-family: 'Krub', sans-serif;
+   background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);/*Color degradado de fondo. De arriba para abajo*/
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.sombra {
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(140,140,140,0.9);/*chrom*/
+    -moz-box-shadow: 0px 5px 15px 0px rgba(140,140,140,0.9);/*fire fox*/
+    box-shadow: 0px 5px 15px 0px rgba(140,140,140,0.9);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    text-decoration: none;
+    width: 90%;
+    text-align: center;
+    border: none;
+    
+}
+
+@media (min-width:768px ){
+    .boton {
+        width: auto;
+    }
+}
+
+.boton:hover{/* Agregando la propiedad hovera un input(estos no la tienen)*/
+    cursor: pointer;
+}
+
+ /* Titulo */
+.titulo  {
+   text-align: center;
+   font-size: 3.8rem;
+   color: var(--oscuro);
+   
+}
+
+.titulo span{
+   font-size: 2rem ;
+}
+
+/* Navegacion Principal */
+
+/** Utilidades **/
+
+.nav-bg{/* Utilidad*/
+    background-color: var(--secundario);
+}
+
+.w-sm-100{/* En pequenito xdxd*/
+    width: 100%;
+}
+
+@media (min-width: 768px){/* A partir de los 768 pixeles lo pondra del lado dercho */
+    .w-sm-100{
+        width: auto;
+    }
+}
+
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+.flex{
+    display: flex;
+}
+
+.navegacion-principal{
+    display: flex;              /* habilita flexbox para poder editar los elementos del padre*/
+    flex-direction: column;
+    
+}
+@media (min-width: 768px)/*Desde una tablet o tamaño mas grande*/{
+    .navegacion-principal {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; 
+    }
+    
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion-principal  a:hover{
+    background-color: var(--primario);
+     color: var(--oscuro);
+}
+/* Hero  */
+.hero{
+    background-image: url(../img/hero.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;/* para que agarre todo el espacio */
+    height: 450px;   
+    position: relative;/*El padre pre tine que tomar una posicion relativa para que le hijo pueda tener una posicon absoluta*/
+    margin-bottom: 2rem;
+}
+
+.contenido-hero {
+    position: absolute;
+    background-color: rgba(0,0,0, .7);/*transparencia*/ 
+    width: 100%;
+    height: 100%;
+
+    display: flex;                   /*forma para alinear cualquier contenido*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2, 
+.contenido-hero p{
+    color: var(--blanco);
+    
+}
+
+.ubicacion {
+    display: flex;
+    align-items: flex-end; /*Alinea verticalmente hacia abajo*/
+}
+/** servicios **/
+
+/*Scroll Snap */
+.servicios,
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always; /* Para poder regresar a la parte de arriba, lo colocamos en: navegacion principal*/
+}
+
+@media (min-width: 768px){
+    .servicios {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 10px;/*Separacion de las columnas*/
+        /*grid-template-columns:(1fr, 1fr, 1fr);Son distintas formas de hacer un grid template colum*/
+    }
+}
+
+.servicio {
+    display: flex;/*REcuerda, alinea de izquierada a derecha*/
+    flex-direction: column;/*Para acomodarlo*/
+    align-items: center;
+}
+
+.servicio h3 {
+    color: var(--secundario) ;
+    font-weight: normal;
+}
+.servicio p {
+    line-height: 2;/*Interlineado*/
+
+}
+
+.servicio .iconos {
+    height: 15rem;/*150px*/
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;/*para hacer un circulo exacto*/
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+/** Contacto **/
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% ); /** Utilizar el valor más pequeño **/
+    margin: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none;
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;/*Mayusculas*/
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+/** Selectores **/
+.campo {
+    margin-bottom: 1rem;
+}
+
+.campo label { /** cada campo del formulario **/
+    color: var(--blanco); 
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block; /** Tomará todo el espacio disponible que hay en el label **/
+
+}
+
+@media (min-width: 786px){
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 50% 50%;/* Definir las ahoras de las comlumnas */
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem ;/* separacion de las columnas */
+    }
+    .campo:nth-child(4),
+    .campo:nth-child(3){/* irá buscando en la clase campo, hasta encontrar el numero el objeto 3*/
+        /*Esto nos ahorra una clase*/
+        grid-column: 1 / 3; /*  su columna irá de la 1 a la 3*/
+
+    }
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+/** [type="text"] ejemplo**/
+ .input-text{/** Puedo cambiar los selecotres dependiendo de lo que quiera editar
+o colocando una clase en cada imput-text **/ 
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+.footer{
+    text-align: center;
+}
